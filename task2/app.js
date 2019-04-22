@@ -90,6 +90,7 @@ function create_element(col,pozleft,Down,Up,Left,Right){
 clear_body();
 create_element('green','20','ArrowDown','ArrowUp', 'ArrowLeft','ArrowRight');
 create_element('red','70','KeyS','KeyW','KeyA','KeyD');
+create_element('yellow','120','Num2','Num8','Num4','Num6');
 
 
 
