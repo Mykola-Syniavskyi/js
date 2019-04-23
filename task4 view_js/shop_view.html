@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+        <div id="main">
+                <h2>Products</h2>
+                <ul >
+                    <li v-for="(key, index) in products ">{{key.name}}, price:{{key.price}}$ for 1 kg
+                        <button type="button" @click="add(index)">add</button>
+                    </li>
+                     
+                </ul>
+                <h2>Basket</h2>
+                <ul >
+                    <li v-for="(val, key) in basket">
+                        {{ products[val] }}  
+                    </li>
+                </ul>
+
+        </div>
+        
+    
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script>
+        new Vue({
+            el: "#main",
+            data:{ 
+                 products: [
+                     {
+                        id : '0',
+                        name :'apple',
+                        price : 20,
+                     },
+                     {
+                        id : '1',
+                        name :'banana',
+                        price : 20,
+                     },
+                     {
+                        id : '2',
+                        name :'kiwi',
+                        price : 20,
+                     }
+
+                 ],
+                 basket:JSON.parse(localStorage.basket || "[]")
+                 },
+                
+            methods:{
+                add: function(key, ge){
+                    this.basket.push(key);
+                    //this.basket.push(ge);
+                }
+            },
+
+            watch: {
+                basket: function(newVal){
+                    localStorage.todo=JSON.stringify(newVal);
+
+                    }
+                },
+            
+        })
+        
+        
+        
+        </script>
+
+</body>
+</html>

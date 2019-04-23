@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        
+        <div>
+            <ul>
+                <li v-for="(item, key) in todo" :key="key">
+                    <a href="#" @click="remove(key,$event)">X</a>
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+        <div>
+                <input type="text" v-model="message">
+                <button type="button" @click="add">add</button>
+        </div>
+        <div>
+            {{countAl}}
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        new Vue ({
+            el: '#app',
+            data: function(){
+                return {
+                    message: 'hello',
+                    todo: JSON.parse(localStorage.todo || "[]")
+                    }
+                },
+            methods: {
+                add: function(){
+                    this.todo.push(this.message);
+                    this.message='';},
+                remove: function(key,e){
+                    this.todo.splice(key,1);             
+                }
+                },
+                
+            watch: {
+                todo: function(newVal){
+                    localStorage.todo=JSON.stringify(newVal);
+
+                    }
+                },
+            
+            computed:{
+                countAl: function(){
+                    return this.todo.length;
+                }
+            }
+
+            }
+
+        )
+    </script>
+</body>
+</html>
