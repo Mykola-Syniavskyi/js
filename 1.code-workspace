@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"uri": "sftp://dev/",
+			"name": "user15 — (Remote)"
+		},
+		{
+			"path": "task3"
+		}
+	],
+	"settings": {}
+}
