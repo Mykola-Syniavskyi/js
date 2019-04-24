@@ -11,17 +11,20 @@
         <div id="main">
                 <h2>Products</h2>
                 <ul >
-                    <li v-for="(key, index) in products ">{{key.name}}, price:{{key.price}}$ for 1 kg
-                        <button type="button" @click="add(index)">add</button>
+                    <li v-for="(key, index) in products " >{{key.name}}, price:{{key.price}}$ for 1 kg
+                        <button type="button" @click="add( key)">add</button>
                     </li>
                      
                 </ul>
                 <h2>Basket</h2>
                 <ul >
-                    <li v-for="(val, key) in basket">
-                        {{ products[val] }}  
+                    <li v-for="(key, index) in basket" :id=key.id   >
+                        {{ key.name}}, price:{{key.price}}$ for 1 kg, quantity:{{quantity}}
+                        <button type="button" @click="del(index)">del</button>
                     </li>
                 </ul>
+                <div><h3>common sum: {{total}}</h3></div>
+                <!-- <div><h3>total money: {{total_$}}</h3></div> -->
 
         </div>
         
@@ -31,21 +34,25 @@
         new Vue({
             el: "#main",
             data:{ 
+                
                  products: [
                      {
                         id : '0',
                         name :'apple',
                         price : 20,
+                        
                      },
                      {
                         id : '1',
                         name :'banana',
                         price : 20,
+                        
                      },
                      {
                         id : '2',
                         name :'kiwi',
                         price : 20,
+                       
                      }
 
                  ],
@@ -53,16 +60,31 @@
                  },
                 
             methods:{
-                add: function(key, ge){
-                    this.basket.push(key);
-                    //this.basket.push(ge);
+                add: function(key ){
+                    this.basket.push(key );
+                   
+                },
+                del: function(index){
+                    var a=this.basket.splice(index,1);
+                    //console.log(a);
                 }
+            },
+            computed:{
+                total: function(){
+                    return  this.basket.length;
+                },
+                quantity: function(id){
+                    console.log(id);
+                  return counter=0;
+                   
+                }
+                
             },
 
             watch: {
                 basket: function(newVal){
-                    localStorage.todo=JSON.stringify(newVal);
-
+                    localStorage.basket=JSON.stringify(newVal);
+                    console.log(localStorage.basket);
                     }
                 },
             
