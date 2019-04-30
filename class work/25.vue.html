@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <component-parent v-bind:test="alert"></component-parent>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+    Vue.config.devtools = true;
+
+    var State = new Vue({
+        data: function() {
+            return {
+                state: {}
+            }
+        }
+    });
+
+
+    Vue.component('component-parent', {
+        template: `<span>
+            Parent
+            <button @click="test('my name is Mykola Syniavskyi')">RUN TEST</button>
+            <br>
+            <component-child></component-child>
+        </span>`,
+        props: {
+            test: {
+                type: Function,
+                default: function() {}
+            }
+        }
+    });
+
+    Vue.component('component-child', {
+        template: '<span>Child</span>'
+    })
+
+
+    var app = new Vue({
+        data: function() {
+            return {
+                message: 'Test',
+                state: State.state
+            }
+        },
+        methods: {
+            alert(data) {
+                alert(data)
+            }
+        }
+    });
+
+    app.$mount('#app');
+
+
+    </script>
+</body>
+</html>

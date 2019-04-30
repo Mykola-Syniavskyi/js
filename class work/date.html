@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>what time is it?</h1>
+    <script>
+    var today= new Date();
+    
+       var day_now=today.getDate(); // дата сегодня
+       document.write('today`s date is:'+day_now+'</br>');
+       var month_now= today.getMonth();// месяц сегодня
+       document.write('today`s month is:'+(month_now+1)+'</br>');
+       var year_now= today.getFullYear();// год сегодня
+       document.write('today`s year is:'+year_now+'</br>');
+       Date.prototype.daysInMonth = function() {
+		return 32 - new Date(this.getFullYear(), this.getMonth(), 32).getDate();//количество дней в текущем месяце 
+	    };
+        var count_days= today.daysInMonth();//количество дней в текущем месяце 
+        document.write('today`s mounth has:'+count_days+'days</br>');
+        var day_week= today.getDay(); // номер дня недели
+        document.write('day`s week number is:'+(day_week)+'</br>');
+       var name_day=''; // название дня
+        switch(day_week) {
+        case 1: name_day ='monday';
+            break;
+        case 2:  name_day='tuesday';
+            break;
+        case 3:  name_day='wednesday';
+            break;
+        case 4:  name_day='thursday';
+            break;
+        case 5:  name_day='friday';
+            break;
+        case 6:  name_day='suterday';
+            break;
+        case 0:  name_day='sunday';
+            break;
+        default:
+            "day-of";
+        break;
+        }
+        document.write('day`s week name is:'+name_day+'</br>');
+        set_date=today.setDate(24);// установка даты
+        var new_date=today.getDate();
+        document.write('new date is:'+new_date+'</br>');
+        var today= new Date();// сброс даты 
+            function daysInMonth(month, year) {//выводим количество дней в любом месяце
+            return new Date(year, month, 0).getDate();
+            }
+        document.write(' quantity days in the FUTURE month is:'+daysInMonth(5, 2019)+'</br>');
+        document.write(' quantity days in the PAST month is:'+daysInMonth(3, 2019)+'</br>');
+        var name_mounth=''; 
+        switch(month_now) {
+        case 1: name_mounth ='jenuary';
+            break;
+        case 2:  name_mounth='february';
+            break;
+        case 3:  name_mounth='mart';
+            break;
+        case 4:  name_mounth='april';
+            break;
+        case 5:  name_mounth='may';
+            break;
+        case 6:  name_mounth='june';
+            break;
+        case 7:  name_mounth='july';
+            break;
+        case 8:  name_mounth='augest';
+            break;
+        case 9:  name_mounth='september';
+            break;
+        case 10:  name_mounth='octouber';
+            break;
+        case 11:  name_mounth='november';
+            break;
+        case 0:  name_mounth='december';
+            break;
+        default:
+            "of";
+            break;
+        }
+        document.write('today`s month is : '+name_mounth);
+       
+    </script>
+    <pre style="color:rgba(5,5,5,0.5);">Методы	Описание
+            Date()	Возвращает текущую дату и время
+            getDate()	Используется для получения текущего дня месяца
+            getDay()	Используется для получения текущего дня недели
+            getFullYear()	Возвращает четырехзначное число текущего года
+            getHours()	Возвращает время в часах ( 0-23)
+            getMilliseconds()	Возвращает миллисекунды ( 0-999)
+            getMinutes()	Возвращает текущие минуты ( 0-59)
+            getMonth()	Возвращает текущий месяц ( 0-11)
+            getSeconds()	Возвращает секунды ( 0-59)
+            getTime()	Возвращает число миллисекунд с 1-го января 1970 года
+            getTimezoneOffset()	Возвращает разницу между местным временем и GMT
+            getUTCDate()	Возвращает день месяца (1-31) в соответствии с UTC
+            getUTCDay()	Возвращает день недели (0-6) в соответствии с UTC
+            getUTCMonth()	Возвращает месяц (0-11) в соответствии с UTC
+            getUTCFullYear()	Возвращает число года в соответствии с UTC
+            getUTCHours()	Возвращает время в часах (0-23) согласно UTC
+            getUTCMinutes()	Возвращает минуты (0-59) согласно UTC
+            getUTCSeconds()	Возвращает секунды (0-59) согласно UTC
+            getUTCMilliseconds()	Возвращает миллисекунды согласно UTC
+            setDate()	Устанавливает текущий день месяца (1-31)
+            setFullYear()	Устанавливает текущий год
+            setHours()	Устанавливает время в часах (0-23)
+            setMinutes()	Устанавливает минуты (0-59)
+            setMonth()	Устанавливает месяц (0-11)
+            setSeconds()	Устанавливает секунды (0-59)
+            setUTCHours()	Устанавливает время в часах (0-23) согласно UTC
+            setUTCMinutes()	Устанавливает минуты (0-59) согласно UTC стандарту
+            setUTCSeconds()	Устанавливает секунды (0-59) согласно UTC стандарту
+            toDateString()	Возвращает текущую дату
+            toLocaleDateString()	Возвращает дату согласно местному времени
+            toLocaleTimeString()	Возвращает время согласно местному времени
+            toLocaleString()	Возвращает дату и время согласно местному времени
+            toString()	Возвращает дату, время и часовой пояс
+            toTimeString()	Возвращает время и часовой пояс
+            toUTCString()	Возвращает время согласно UTC стандарту</pre>
+</body>
+</html>

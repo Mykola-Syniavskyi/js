@@ -40,19 +40,19 @@
                         id : '0',
                         name :'apple',
                         price : 20,
-                        
+                        count : 1
                      },
                      {
                         id : '1',
                         name :'banana',
                         price : 20,
-                        
+                        count : 1
                      },
                      {
                         id : '2',
                         name :'kiwi',
                         price : 20,
-                       
+                        count : 1
                      }
 
                  ],
@@ -61,7 +61,12 @@
                 
             methods:{
                 add: function(key ){
-                    this.basket.push(key );
+                    if(this.basket.indexof(this.basket.key)===-1){
+                        this.basket.push(key );
+                    }else{
+                        this.basket.count++
+                    }
+                    
                    
                 },
                 del: function(index){
