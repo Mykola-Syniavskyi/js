@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+<<<<<<< HEAD
     <div id="main">
         <table>
             <tr>
@@ -58,5 +59,31 @@
     })
     
     </script>
+=======
+    <div id="app">
+        <ul >
+            <li v-for="day in work_days" v-text="day"></li>
+            <li class="rest" v-for="day in days_off" v-text="day"></li>
+        </ul>
+               
+    </div>
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        Vue.config.devtools = true;
+
+        new Vue({
+            el:'#app',
+            data:{
+                work_days: ['Monday','Tueday','Wednesday','Thursday','Friday'],
+                days_off:['Saturday','Sunday']
+            }        
+        })
+    </script>
+    
+    
+>>>>>>> fa516789f729594a108683d03a0ae57c3d2fc217
 </body>
 </html>
