@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="cal.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <table>
+            <tr>
+                <td class="td_work" v-for="workday in workweek" v-text="workday"></td>
+            </tr>
+            <tr>
+                <td class="td_work" v-for="workday in workweek" v-text="workday"></td>
+            </tr>
+            <tr>
+                <td class="td_work" v-for="workday in workweek" v-text="workday"></td>
+            </tr>
+            <tr>
+                <td class="td_work" v-for="workday in workweek" v-text="workday"></td>
+            </tr>
+            <tr>
+                <td class="td_work" v-for="workday in workweek" v-text="workday"></td>
+            </tr>
+            <tr>
+                <td class="td_work" v-for="workday in workweek" v-text="workday"></td>
+            </tr>
+            <tr>
+                <td class="td_work" v-for="workday in workweek" v-text="workday"></td>
+             c </tr>
+        </table>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>Vue.config.devtools = true;
+    // var d= new Date();
+    
+    // document.write(d.getDate());
+    new Vue({
+        el:'#main',
+        data:{
+            workweek:['MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY']
+            } ,
+           
+        methods:{
+           getdate(){
+            var d= new Date();
+                if (workday==TUESDAY){
+                    var date=document.write(d.getDate());
+                    date.push().workday;
+                }
+                
+           }
+        }
+    })
+    
+    </script>
+</body>
+</html>
