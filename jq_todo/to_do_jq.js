@@ -18,18 +18,11 @@
 
         
     function save() {
-        localStorage.setItem('todo', JSON.stringify(list_arr))
-        // localStorage.todo = JSON.stringify(list_arr);
+        localStorage.setItem('todo', JSON.stringify(list_arr));
     }
 
     function buildList() {
         list.html('');
-        /* list_arr.forEach(function(text, index)  {
-            var item = makeItem(text);
-            list.appendChild(item);
-            setItemActions(item, index);
-        }); */
-
         $(list_arr).each(function(index, text){
             var item = makeItem(text);
             list.append(item);
@@ -41,7 +34,6 @@
 
     function makeItem(value) {
         var li = $('<li>');
-        // li.innerHTML = item_template.replace(/{{val}}/g, value);
         li.html(item_template.replace(/{{val}}/g, value));
         return li;
     }
@@ -60,9 +52,7 @@
         });
 
         edit_btn.on('click', function() {
-            //edit_input.style.display = 'inline-block';
             edit_input.show();
-            // item_text.style.display = 'none';
 			edit_btn.hide();
 			apply_btn.show();
             item_text.hide();
