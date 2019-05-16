@@ -86,7 +86,7 @@
                 for (var index in basket) {
                     counter += +basket[index];
                 }
-                $('#counter').text('All: ' + counter);
+                $('#counter').text('All: ' + counter+'pc');
         };
 
 
@@ -127,14 +127,14 @@
 
 
 
-        var totalPrice= function(prod_index){
+        var totalPrice= function(){
             var counter = 0;
-            var product= basket[prod_index];console.log(product);
+            
                 for (var index in basket) {
-                    counter += +basket[index];
-                    //console.log(basket[index]);
+                    counter  += +products[index].price*basket[index];;
+                    console.log(products[index].price);
                 }
-                $('#sum').text('Total price: ' + counter);
+                $('#sum').text('Total price: ' +counter+'$' );
         }
         
         totalPrice();
