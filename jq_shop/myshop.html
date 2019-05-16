@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="myshop.css">
+    <title>Document</title>
+</head>
+<body>
+    <h3>shop</h3>
+   <ul id="shop"></ul> 
+   <hr> 
+   <h3>cart</h3>
+   <ul id="basket"></ul> 
+   <div id="counter"></div>
+   <div id="sum"></div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+   (function($){
+    var $productsList= $('#shop');
+    var $basket= $('#basket');
+    var products= [
+
+        {
+            id : '0',
+            name :'apple',
+            price : 20,      
+        },
+
+        {
+            id : '1',
+            name :'ananas',
+            price : 50                    
+        },
+
+        {
+            id : '2',
+            name :'strowberry',
+            price : 35           
+        },
+
+        {
+            id : '3',
+            name :'kiwi',
+            price : 45
+           
+        }
+    ]
+       
+        var basket= JSON.parse(localStorage.basket || '{}');
+        var saveBasket= function(){
+           localStorage.basket= JSON.stringify(basket);
+        }
+
+       
+        var count=1;
+        var bildList= products.map( function(product, index, current_array){ 
+            return '<li>'+count++ + ')'+product.name+' => '+'price:'+'  '+product.price+'$' +
+            ' '+' <button type="button" class="add_js">add</button>' +'</li>';
+            
+            });
+
+
+        $productsList.html(bildList.join(''));
+
+        $productsList.on('click', '.add_js', function(){
+            var $li = $(this).parent();
+            var index = $li.index();
+            if (void 0 === basket[index]) {
+                basket[index] = 1;
+                } else {
+                    basket[index]++;
+                }
+                totalPrice();
+                buildBasket();
+                saveBasket();
+               
+                console.log(basket);
+        
+
+        })
+
+        var build_counter = function() {
+                var counter = 0;
+                for (var index in basket) {
+                    counter += +basket[index];
+                }
+                $('#counter').text('All: ' + counter);
+        };
+
+
+
+
+        var buildBasket= function(){
+            var basketHtml = Object.keys(basket).map(function(prod_index) {
+                    var product = products[prod_index];
+                    var count = basket[prod_index];
+                    return '<li>' + 
+                        product.name + ' x ' + count +' '+'$'+ product.price*count+
+                        '<button data-index="'+ prod_index +'" type="button" class="js_remove">X</button>'
+                    '</li>';
+                }).join('');
+
+                $basket.html(basketHtml);
+                build_counter();
+                
+                
+
+        }
+        buildBasket();
+
+        $basket.on('click', '.js_remove', function() {
+                var index = $(this).data('index');
+                delete basket[index];
+                buildBasket();
+                totalPrice();
+                saveBasket();
+            });  
+
+        
+        
+
+        
+        
+       
+
+
+
+        var totalPrice= function(prod_index){
+            var counter = 0;
+            var product= basket[prod_index];console.log(product);
+                for (var index in basket) {
+                    counter += +basket[index];
+                    //console.log(basket[index]);
+                }
+                $('#sum').text('Total price: ' + counter);
+        }
+        
+        totalPrice();
+       
+
+
+
+   }(jQuery))
+   </script> 
+</body>
+</html>
