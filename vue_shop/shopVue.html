@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="shop.css">
+    <title>Shop</title>
 </head>
 <body>
     <div id="shop">
-        <h2>Products</h2>
+        <h2>Shop</h2>
         <ul>
-            <li v-for="(item, key) in productList">{{ item.name }}, cost: ${{ item.price }}
+            <li v-for="(item, key) in productList">{{ item.name }} : ${{ item.price }}
                 <button type="button" @click='addToCart(key)'>Add</button>
             </li>
         </ul>
@@ -18,7 +19,7 @@
         <ul>
             <li v-for="(item, key) in cart_list" v-if="item">{{ productList[key].name }}, x{{ item }}. 
                 Total: ${{ productList[key].price * item}} 
-                <button type="button" @click='removeFromCart(key)'>Remove</button>
+                <button type="button" @click='removeFromCart(key)'>X</button>
             </li>
         </ul>
         <strong>Total: </strong>${{ total }}
@@ -31,17 +32,22 @@
             data: {
                 productList:  [
                     {
-                        name: 'product 1',
+                        name: 'apple',
                         price: 40
                     },
                     {
-                        name: 'product 2',
+                        name: 'banana',
                         price: 120
                     },
                     {
-                        name: 'product 3',
+                        name: 'cherry',
                         price: 230
-                    }],
+                    },
+                    {
+                        name: 'lemon',
+                        price: 23
+                    }
+                    ],
                 cart_list: JSON.parse(localStorage.cart || '{}'),
             },
             computed: {
@@ -80,50 +86,3 @@
     </script>
 </body>
 </html>
-
-<!-- var el_prods = new Vue ({
-    el: '#products',
-    data: {
-        productList:  [
-        {
-            name: 'product 1',
-            price: 40
-        },
-        {
-            name: 'product 2',
-            price: 120
-        },
-        {
-            name: 'product 3',
-            price: 230
-        }]
-    },
-    methods: {
-        addToCart: function(i){
-            if(-1 !== el_cart.cart_list.indexOf(i))
-            {
-                console.log('already exists');
-            } else {
-                el_cart.cart_list.push(this.productList[i]);
-                el_cart.saveCart();
-            }
-            //console.log(this.productList[i]);
-        }
-    }
-});
-
-var el_cart = new Vue ({
-    el: '#cart',
-    data: {
-        cart_list: JSON.parse(localStorage.cart || '{}'),
-        message: 'hello'
-    },
-    methods: {
-        removeFromCart: function(){
-            return true;
-        },
-        saveCart: function(){
-            localStorage.cart = JSON.stringify(this.cart_list);
-        }
-    }
-}); -->

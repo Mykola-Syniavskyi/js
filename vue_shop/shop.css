@@ -1,0 +1,23 @@
+body{
+    background: #8ee2d1;
+    background-size: cover;
+    width: 80%;
+    margin: auto;
+}
+button{
+    background:#59ff74;
+    border-radius: 50%;
+}
+h2{
+    color: crimson;
+    margin-left: 45%;
+    font-style: italic;
+}
+ul{
+    margin: auto;
+    background-image: url('https://st2.depositphotos.com/1377511/8248/i/950/depositphotos_82486160-stock-photo-collection-of-artistic-hand-drawn.jpg');
+    background-size: cover;
+    color: rgb(46, 24, 24);
+    font-weight: 900;
+    width: 40%;
+}
