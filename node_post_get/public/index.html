@@ -10,28 +10,52 @@
 <body>
   <form class="form-inline" method="POST" action="/" style=" position: absolute; left: 10% ; top: 10%;">
     <div class="form-group mb-2">
-      <input type="text" name="text"   style="border: solid black 2px ;" >
+      <input type="text" name="text"   style="border: solid black 2px ;" placeholder="with form">
     </div>
     <button type="submit" class="btn btn-primary mb-2">SEND</button>
   </form><br>
 
-
+<!-- send data -->
+<input type="text" name="text" class="input_js" style="position: absolute; left: 25% ; top: 40%;" placeholder="with js:">
+<button type="submit"  class="btn btn-primary mb-2 " onclick="sentData()"  style="position: absolute; left: 20% ; top: 40%;">POST</button><br>
 
   
+<!-- get data -->
 <button type="submit"  class="btn btn-primary mb-2 " onclick="getData()"  style="position: absolute; left: 50% ; top: 10%;">GET</button>
- <span style="position: absolute; left: 50% ; top: 30%;"></span>   
+ <textarea disabled="disabled" style="position: absolute; left: 50% ; top: 30%; width: 300px; height: 300px;"></textarea>   
     
   <script>
-  function getData(){
-        fetch('/index')
-        .then((res) => res.json())
-        // function(res) { return res.json() }
-        .then((data) => { 
-            console.log(data.text) 
-           document.getElementsByTagName('span')[0].innerHTML = JSON.stringify( data );
-        });
-    }
+    function getData(){
+          fetch('/index')
+          .then((res) => res.json())
+          // function(res) { return res.json() }
+          .then((data) => { 
+            data=data.map(({ text }) => text);
+              console.log(data) 
+        document.getElementsByTagName('textarea')[0].innerHTML = data ;
+            
+          });
+      }
 
+
+
+    function sentData(){
+     var data= document.getElementsByClassName('input_js')[0].value;
+
+      fetch('/', { 
+            method: 'POST', 
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({text: data})}
+        )
+        .then((res) => res.json())
+        .then((data) => {
+            //console.log(data);
+        });
+        document.getElementsByClassName('input_js')[0].value='';
+    }
     
   </script>
 </body>

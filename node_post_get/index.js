@@ -7,6 +7,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var DATA=[];
 
+
+
 server.use(bodyParser.json());
 
 //server.use(urlencodedParser)
@@ -28,7 +30,7 @@ server.post('/', urlencodedParser, (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
     
     
-    console.log(DATA);
+    console.log(req.body.text);
 });
 
 
