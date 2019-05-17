@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>FORM</title>
+</head>
+<body>
+  <form class="form-inline" method="POST" action="/" style=" position: absolute; left: 10% ; top: 10%;">
+    <div class="form-group mb-2">
+      <input type="text" name="text"   style="border: solid black 2px ;" >
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">SEND</button>
+  </form><br>
+
+
+
+  
+<button type="submit"  class="btn btn-primary mb-2 " onclick="getData()"  style="position: absolute; left: 50% ; top: 10%;">GET</button>
+ <span style="position: absolute; left: 50% ; top: 30%;"></span>   
+    
+  <script>
+  function getData(){
+        fetch('/index')
+        .then((res) => res.json())
+        // function(res) { return res.json() }
+        .then((data) => { 
+            console.log(data.text) 
+           document.getElementsByTagName('span')[0].innerHTML = JSON.stringify( data );
+        });
+    }
+
+    
+  </script>
+</body>
+</html>
