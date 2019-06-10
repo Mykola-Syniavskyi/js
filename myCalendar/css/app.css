@@ -1,0 +1,30 @@
+body{
+    background-color: aqua;
+}
+.days{
+    font-weight: 700;
+    
+}
+
+.table, th, td {
+    border: 1px solid black;
+    background-color: rgb(237, 255, 155);
+    border-radius: 5px;
+  }
+button{
+    background: rgba(89, 142, 255, 0.541);
+    border-radius: 10px;
+}
+.grey {
+    color: #959595;
+}
+.red {
+    color: red;
+}
+.black {
+    color: black;
+}
+.current{
+    color: white;
+    background: red;
+}
